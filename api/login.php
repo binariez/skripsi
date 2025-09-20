@@ -23,7 +23,7 @@ if (isset($_POST['txtusername']) && isset($_POST['txtpassword'])) {
             echo "
         <script>
             alert('SUKSES. role: $role');
-            window.location.href='admin/';
+            window.location.href='/admin/';
         </script>";
         else {
             echo "
