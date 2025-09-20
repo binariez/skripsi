@@ -5,7 +5,7 @@ namespace Midtrans;
 require_once __DIR__ . '/../../../vendor/autoload.php';
 require_once __DIR__ . '/../../functions/Connection.php';
 Config::$isProduction = false;
-Config::$serverKey = 'Mid-server-ipOUcsUcaSR3CpCGluYgRTb';
+Config::$serverKey = $_ENV['MIDTRANS'];
 
 $json = file_get_contents('php://input');
 $data = json_decode($json, true);

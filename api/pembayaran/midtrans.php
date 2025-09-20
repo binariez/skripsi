@@ -1,7 +1,7 @@
 <?php
 require_once __DIR__ . '/../../vendor/autoload.php';
 
-\Midtrans\Config::$serverKey = 'Mid-server-ipOUcsUcaSR3CpCGluY5gRTb';
+\Midtrans\Config::$serverKey = $_ENV['MIDTRANS'];
 \Midtrans\Config::$isProduction = false;
 \Midtrans\Config::$isSanitized = true;
 \Midtrans\Config::$is3ds = true;

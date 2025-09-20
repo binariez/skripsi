@@ -13,7 +13,7 @@ curl_setopt_array($curl, array(
     CURLOPT_HTTPHEADER => array(
         'Accept: application/json',
         'Content-Type: application/json',
-        'Authorization: Basic TWlkLXNlcnZlci1pcE9VY3NVY2FTUjNDcENHbHVZNWdSVGI6'
+
     ),
 ));
 
