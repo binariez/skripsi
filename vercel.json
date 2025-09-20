@@ -73,11 +73,11 @@
         { "src": "/admin(/?)", "dest": "/api/admin/index.php" },
 
         {
-            "src": "/livechat/get_chat.php",
+            "src": "livechat/get_chat.php",
             "dest": "/api/livechat/get_chat.php"
         },
         {
-            "src": "/livechat/send_chat.php",
+            "src": "livechat/send_chat.php",
             "dest": "/api/livechat/send_chat.php"
         }
     ]
