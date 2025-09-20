@@ -4,6 +4,17 @@
             "runtime": "vercel-php@0.5.5"
         }
     },
+    "rewrites": [
+        { "source": "/api/admin/(.*)", "destination": "/api/admin/$1" },
+        { "source": "/api/functions/(.*)", "destination": "/api/functions/$1" },
+        { "source": "/api/livechat/(.*)", "destination": "/api/livechat/$1" },
+        { "source": "/api/pages/(.*)", "destination": "/api/pages/$1" },
+        {
+            "source": "/api/pembayaran/(.*)",
+            "destination": "/api/pembayaran/$1"
+        },
+        { "source": "/api/(.*)", "destination": "/api/$1" }
+    ],
     "routes": [
         { "src": "/", "dest": "/api/index.php" },
         {
@@ -18,6 +29,58 @@
         {
             "src": "/public/*/(.*)",
             "dest": "/*/$1"
+        },
+        {
+            "src": "/api/pembayaran/_index.php",
+            "dest": "/api/pembayaran/_index.php"
+        },
+        {
+            "src": "/api/pembayaran/bayar.php",
+            "dest": "/api/pembayaran/bayar.php"
+        },
+        {
+            "src": "/api/pembayaran/cleanup_transaksi.php",
+            "dest": "/api/pembayaran/cleanup_transaksi.php"
+        },
+        {
+            "src": "/api/pembayaran/detail_produk.php",
+            "dest": "/api/pembayaran/detail_produk.php"
+        },
+        {
+            "src": "/api/pembayaran/index.php",
+            "dest": "/api/pembayaran/index.php"
+        },
+        {
+            "src": "/api/pembayaran/keranjang.php",
+            "dest": "/api/pembayaran/keranjang.php"
+        },
+        {
+            "src": "/api/pembayaran/kontak.php",
+            "dest": "/api/pembayaran/kontak.php"
+        },
+        {
+            "src": "/api/pembayaran/login.php",
+            "dest": "/api/pembayaran/login.php"
+        },
+        {
+            "src": "/api/pembayaran/logout.php",
+            "dest": "/api/pembayaran/logout.php"
+        },
+        {
+            "src": "/api/pembayaran/produk.php",
+            "dest": "/api/pembayaran/produk.php"
+        },
+        {
+            "src": "/api/pembayaran/promosi.php",
+            "dest": "/api/pembayaran/promosi.php"
+        },
+        {
+            "src": "/api/pembayaran/regist.php",
+            "dest": "/api/pembayaran/regist.php"
+        },
+        {
+            "src": "/api/pembayaran/riwayat.php",
+            "dest": "/api/pembayaran/riwayat.php"
         }
     ]
 }
