@@ -1,6 +1,6 @@
 <?php
-require_once __DIR__ . "../regist.php";
-require_once __DIR__ . "../login.php";
+require_once __DIR__ . "/../regist.php";
+require_once __DIR__ . "/../login.php";
 ?>
 
 <nav class="sticky top-0 z-30">
