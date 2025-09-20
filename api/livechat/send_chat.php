@@ -1,7 +1,7 @@
 <?php
 require_once __DIR__ . '/../functions/SessionHandlerInterface.php';
 session_start();
-require '../functions/Connection.php';
+require __DIR__ . '/../functions/Connection.php';
 global $db;
 $collection = $db->livechat;
 
