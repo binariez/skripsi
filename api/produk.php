@@ -88,7 +88,7 @@ $data = NSessionHandler::getProdukAll($filter, $options);
                 ?>
                     <div class="card w-96 me-2 bg-base-100 shadow-xl transition-scale hover:scale-105 delay-100 duration-150">
                         <a href="detail_produk.php?prod_id=<?= $d['_id'] ?>">
-                            <figure><img class="w-full sm:w-[300px] aspect-square object-cover object-center rounded-lg" src="../public/produk_gambar/<?= $d['prod_gambar'] ?>" alt="gambar" /></figure>
+                            <figure><img class="w-full sm:w-[300px] aspect-square object-cover object-center rounded-lg" src="https://img.nafisahcake.store/produk/<?= $d['prod_gambar'] ?>" alt="gambar" /></figure>
                         </a>
                         <div class="card-body">
                             <h2 class="card-title"><?= ucwords($d['prod_nama']) ?></h2>
