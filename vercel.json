@@ -3,6 +3,9 @@
     "functions": {
         "api/*.php": { "runtime": "vercel-php@0.5.5" }
     },
+    "rewrites": [
+        { "source": "/api/admin", "destination": "/api/admin/index.php" }
+    ],
     "routes": [
         { "src": "/", "dest": "/api/index.php" },
         {
@@ -65,6 +68,7 @@
         {
             "src": "/public/*/(.*)",
             "dest": "/*/$1"
-        }
+        },
+        { "src": "/(.*)", "dest": "/api/$1.php" }
     ]
 }
