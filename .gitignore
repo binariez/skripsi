@@ -1,4 +1,5 @@
 .vercel
 /vendor/
+/public/produk_gambar/
 .vscode
 .env

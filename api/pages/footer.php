@@ -1,6 +1,6 @@
 <?php
 if (isset($_SESSION['UserLogin'])):
-    include_once "livechat/livechat.php";
+    include_once __DIR__ . "/../livechat/livechat.php";
 endif;
 ?>
 <footer class="mt-16 bg-slate-700 text-sm text-slate-200 pb-4">
