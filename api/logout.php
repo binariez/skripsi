@@ -1,4 +1,4 @@
 <?php
-require_once __DIR__ . '/functions/Sessions.php';
-NSessionHandler::logout();
+require_once 'functions/SessionHandlerInterface.php';
+session_start();
 header("Location: index.php");
