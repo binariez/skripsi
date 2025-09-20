@@ -3,6 +3,7 @@ require_once "functions/Sessions.php";
 require_once "functions/Template.php";
 
 date_default_timezone_set('Asia/Jakarta');
+require_once 'functions/SessionHandlerInterface.php';
 session_start();
 
 $userid = new MongoDB\BSON\ObjectId($_SESSION['UserLogin'][0]['id']);

@@ -1,6 +1,7 @@
 <?php
 require_once __DIR__ . '/../vendor/autoload.php';
-include 'functions/Connection.php';
+require_once 'functions/Connection.php';
+require_once 'functions/SessionHandlerInterface.php';
 session_start();
 
 // Ambil filter dari GET (default: semua)

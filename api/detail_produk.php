@@ -5,6 +5,7 @@ use Carbon\Carbon;
 
 Carbon::setLocale('id');
 date_default_timezone_set('Asia/Jakarta');
+require_once 'functions/SessionHandlerInterface.php';
 session_start();
 
 if (!isset($_GET['prod_id'])) {

@@ -1,4 +1,5 @@
 <?php
+require_once 'functions/SessionHandlerInterface.php';
 session_start();
 require_once 'functions/Sessions.php';
 

@@ -1,6 +1,7 @@
 <?php
 require_once __DIR__ . '/functions/Sessions.php';
 require_once __DIR__ . '/functions/Template.php';
+require_once 'functions/SessionHandlerInterface.php';
 session_start();
 
 // tambah produk ke keranjang
