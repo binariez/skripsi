@@ -1,15 +1,13 @@
 <?php
-
-use SessionHandlerInterface;
-
-class MongoSessionHandler implements SessionHandlerInterface
+require_once __DIR__ . '/../../vendor/autoload.php';
+class MongoSessionHandler implements \SessionHandlerInterface
 {
     private $collection;
 
-    public function __construct($uri, $collection = 'sessions')
+    public function __construct($uri, $dbName = 'crm', $collection = 'sessions')
     {
-        $client = new MongoDB\Client($uri);
-        $this->collection = $client->$collection;
+        $client = new \MongoDB\Client($uri);
+        $this->collection = $client->$dbName->$collection;
     }
 
     public function open(string $path, string $name): bool
@@ -56,7 +54,3 @@ class MongoSessionHandler implements SessionHandlerInterface
         return $result->getDeletedCount();
     }
 }
-
-$uri = 'mongodb+srv://' . $_ENV['MDB_USER'] . ':' . $_ENV['MDB_PASS'] . '@' . $_ENV['ATLAS_CLUSTER_SRV'] . '/?retryWrites=true&w=majority&appName=' . $_ENV['APP_NAME'];
-$handler = new MongoSessionHandler($uri);
-session_set_save_handler($handler, true);
