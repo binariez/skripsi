@@ -4,17 +4,6 @@
             "runtime": "vercel-php@0.5.5"
         }
     },
-    "rewrites": [
-        { "source": "/api/admin/(.*)", "destination": "/api/admin/$1" },
-        { "source": "/api/functions/(.*)", "destination": "/api/functions/$1" },
-        { "source": "/api/livechat/(.*)", "destination": "/api/livechat/$1" },
-        { "source": "/api/pages/(.*)", "destination": "/api/pages/$1" },
-        {
-            "source": "/api/(.*)",
-            "destination": "/api/$1"
-        },
-        { "source": "/api/(.*)", "destination": "/api/$1" }
-    ],
     "routes": [
         { "src": "/", "dest": "/api/index.php" },
         {
@@ -23,64 +12,60 @@
             "dest": "/api/index.php"
         },
         {
+            "src": "/bayar.php",
+            "dest": "/api/ayar.php"
+        },
+        {
+            "src": "/cleanup_transaksi.php",
+            "dest": "/api/cleanup_transaksi.php"
+        },
+        {
+            "src": "/detail_produk.php",
+            "dest": "/api/detail_produk.php"
+        },
+        {
+            "src": "/index.php",
+            "dest": "/api/index.php"
+        },
+        {
+            "src": "/keranjang.php",
+            "dest": "/api/keranjang.php"
+        },
+        {
+            "src": "/kontak.php",
+            "dest": "/api/kontak.php"
+        },
+        {
+            "src": "/login.php",
+            "dest": "/api/login.php"
+        },
+        {
+            "src": "/logout.php",
+            "dest": "/api/logout.php"
+        },
+        {
+            "src": "/produk.php",
+            "dest": "/api/produk.php"
+        },
+        {
+            "src": "/promosi.php",
+            "dest": "/api/promosi.php"
+        },
+        {
+            "src": "/regist.php",
+            "dest": "/api/regist.php"
+        },
+        {
+            "src": "/riwayat.php",
+            "dest": "/api/riwayat.php"
+        },
+        {
             "src": "/public/(.*)",
             "dest": "/$1"
         },
         {
             "src": "/public/*/(.*)",
             "dest": "/*/$1"
-        },
-        {
-            "src": "_index.php",
-            "dest": "/api/_index.php"
-        },
-        {
-            "src": "bayar.php",
-            "dest": "/api/bayar.php"
-        },
-        {
-            "src": "cleanup_transaksi.php",
-            "dest": "/api/cleanup_transaksi.php"
-        },
-        {
-            "src": "detail_produk.php",
-            "dest": "/api/detail_produk.php"
-        },
-        {
-            "src": "index.php",
-            "dest": "/api/index.php"
-        },
-        {
-            "src": "keranjang.php",
-            "dest": "/api/keranjang.php"
-        },
-        {
-            "src": "kontak.php",
-            "dest": "/api/kontak.php"
-        },
-        {
-            "src": "login.php",
-            "dest": "/api/login.php"
-        },
-        {
-            "src": "logout.php",
-            "dest": "/api/logout.php"
-        },
-        {
-            "src": "produk.php",
-            "dest": "/api/produk.php"
-        },
-        {
-            "src": "promosi.php",
-            "dest": "/api/promosi.php"
-        },
-        {
-            "src": "regist.php",
-            "dest": "/api/regist.php"
-        },
-        {
-            "src": "riwayat.php",
-            "dest": "/api/riwayat.php"
         }
     ]
 }
