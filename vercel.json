@@ -58,6 +58,7 @@
             "src": "/riwayat.php",
             "dest": "/api/riwayat.php"
         },
+
         {
             "src": "/public/(.*)",
             "dest": "/$1"
@@ -66,7 +67,10 @@
             "src": "/public/*/(.*)",
             "dest": "/*/$1"
         },
+
         { "src": "/admin", "dest": "/api/admin/index.php" },
-        { "src": "/(.*)", "dest": "/api/$1.php" }
+        { "src": "/admin", "dest": "/api/admin/index.php" },
+        { "src": "/admin(/?)", "dest": "/api/admin/index.php" },
+        { "src": "/admin/(.*)", "dest": "/api/admin/$1.php" }
     ]
 }
