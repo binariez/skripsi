@@ -10,8 +10,8 @@
         { "source": "/api/livechat/(.*)", "destination": "/api/livechat/$1" },
         { "source": "/api/pages/(.*)", "destination": "/api/pages/$1" },
         {
-            "source": "/api/pembayaran/(.*)",
-            "destination": "/api/pembayaran/$1"
+            "source": "/api/(.*)",
+            "destination": "/api/$1"
         },
         { "source": "/api/(.*)", "destination": "/api/$1" }
     ],
@@ -31,56 +31,56 @@
             "dest": "/*/$1"
         },
         {
-            "src": "/api/pembayaran/_index.php",
-            "dest": "/api/pembayaran/_index.php"
+            "src": "_index.php",
+            "dest": "/api/_index.php"
         },
         {
-            "src": "/api/pembayaran/bayar.php",
-            "dest": "/api/pembayaran/bayar.php"
+            "src": "bayar.php",
+            "dest": "/api/bayar.php"
         },
         {
-            "src": "/api/pembayaran/cleanup_transaksi.php",
-            "dest": "/api/pembayaran/cleanup_transaksi.php"
+            "src": "cleanup_transaksi.php",
+            "dest": "/api/cleanup_transaksi.php"
         },
         {
-            "src": "/api/pembayaran/detail_produk.php",
-            "dest": "/api/pembayaran/detail_produk.php"
+            "src": "detail_produk.php",
+            "dest": "/api/detail_produk.php"
         },
         {
-            "src": "/api/pembayaran/index.php",
-            "dest": "/api/pembayaran/index.php"
+            "src": "index.php",
+            "dest": "/api/index.php"
         },
         {
-            "src": "/api/pembayaran/keranjang.php",
-            "dest": "/api/pembayaran/keranjang.php"
+            "src": "keranjang.php",
+            "dest": "/api/keranjang.php"
         },
         {
-            "src": "/api/pembayaran/kontak.php",
-            "dest": "/api/pembayaran/kontak.php"
+            "src": "kontak.php",
+            "dest": "/api/kontak.php"
         },
         {
-            "src": "/api/pembayaran/login.php",
-            "dest": "/api/pembayaran/login.php"
+            "src": "login.php",
+            "dest": "/api/login.php"
         },
         {
-            "src": "/api/pembayaran/logout.php",
-            "dest": "/api/pembayaran/logout.php"
+            "src": "logout.php",
+            "dest": "/api/logout.php"
         },
         {
-            "src": "/api/pembayaran/produk.php",
-            "dest": "/api/pembayaran/produk.php"
+            "src": "produk.php",
+            "dest": "/api/produk.php"
         },
         {
-            "src": "/api/pembayaran/promosi.php",
-            "dest": "/api/pembayaran/promosi.php"
+            "src": "promosi.php",
+            "dest": "/api/promosi.php"
         },
         {
-            "src": "/api/pembayaran/regist.php",
-            "dest": "/api/pembayaran/regist.php"
+            "src": "regist.php",
+            "dest": "/api/regist.php"
         },
         {
-            "src": "/api/pembayaran/riwayat.php",
-            "dest": "/api/pembayaran/riwayat.php"
+            "src": "riwayat.php",
+            "dest": "/api/riwayat.php"
         }
     ]
 }
