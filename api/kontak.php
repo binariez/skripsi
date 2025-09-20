@@ -1,5 +1,5 @@
 <?php
-require '../vendor/autoload.php';
+require_once __DIR__ . '/../vendor/autoload.php';
 include 'functions/Connection.php';
 session_start();
 
