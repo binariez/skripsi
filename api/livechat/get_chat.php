@@ -1,4 +1,5 @@
 <?php
+require_once __DIR__ . '/../functions/SessionHandlerInterface.php';
 session_start();
 require '../functions/Connection.php';
 

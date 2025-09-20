@@ -117,7 +117,7 @@
 
     // Load histori chat saat halaman dimuat
     function loadHistory() {
-        fetch('livechat/get_chat.php')
+        fetch('/livechat/get_chat.php')
             .then(res => res.json())
             .then(data => {
                 data.chats.forEach(c => {
@@ -133,7 +133,7 @@
         if (e.key === 'Enter' && chatInput.value.trim() !== '') {
             const msgText = chatInput.value;
 
-            fetch('livechat/send_chat.php', {
+            fetch('/livechat/send_chat.php', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded'
@@ -151,7 +151,7 @@
 
     // polling chat baru dari server
     setInterval(() => {
-        fetch('livechat/get_chat.php?lastTime=' + lastTime)
+        fetch('/livechat/get_chat.php?lastTime=' + lastTime)
             .then(res => res.json())
             .then(data => {
                 data.chats.forEach(c => {
