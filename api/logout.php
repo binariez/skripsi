@@ -1,5 +1,9 @@
 <?php
 require_once 'functions/SessionHandlerInterface.php';
 session_start();
-session_destroy();
-header("Location: index.php");
+if (session_destroy()) {
+    echo "logout sukses";
+} else {
+    echo "logout gagal";
+}
+// header("Location: index.php");
