@@ -1,6 +1,6 @@
 <?php
-require_once "regist.php";
-require_once "login.php";
+// require_once "regist.php";
+// require_once "login.php";
 ?>
 
 <nav class="sticky top-0 z-30">
