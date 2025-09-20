@@ -36,7 +36,7 @@ if (isset($_POST['txtusername']) && isset($_POST['txtpassword'])) {
         echo "
         <script>
             alert('GAGAL');
-            window.location.href='login.php';
+            window.location.href='index.php';
         </script>";
     }
 } else {
