@@ -4,7 +4,7 @@ ob_start();
 
 require_once __DIR__ . '/../functions/Sessions.php';
 require_once __DIR__ . '/func/CRUD.php';
-require_once 'functions/SessionHandlerInterface.php';
+require_once __DIR__ . '/../functions/SessionHandlerInterface.php';
 session_start();
 
 // Cek apakah user sudah login
