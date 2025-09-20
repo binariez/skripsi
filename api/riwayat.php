@@ -100,7 +100,7 @@ if (isset($_POST['berireview'])) {
                                 <!-- Gambar Produk -->
                                 <div class="w-full sm:w-auto">
                                     <a href="detail_produk.php?prod_id=<?= $item['id_prod'] ?>">
-                                        <img src="../public/produk_gambar/<?= $gambar ?>"
+                                        <img src="https://img.nafisahcake.store/produk/<?= $gambar ?>"
                                             alt="gambar"
                                             class="w-full sm:w-[150px] aspect-square object-cover object-center rounded-lg" />
                                     </a>

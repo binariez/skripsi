@@ -33,7 +33,7 @@
         ?>
             <div class="rounded-lg md:w-2/3 mx-auto">
                 <div class="mb-6 rounded-lg bg-white p-6 shadow-md flex flex-col items-center md:flex-row md:items-center md:justify-between">
-                    <img src="../public/produk_gambar/<?= $produk->prod_gambar ?>" alt="gambar"
+                    <img src="https://img.nafisahcake.store/produk/<?= $produk->prod_gambar ?>" alt="gambar"
                         class="w-full h-auto rounded-lg object-cover object-center mb-4 md:mb-0 md:w-[150px] aspect-square" />
 
                     <div class="flex flex-col items-center md:flex-row md:items-center md:justify-between md:flex-1 md:ml-4 w-full">

@@ -76,7 +76,7 @@ $produkDiskon = $db->produk->find($query);
                     ?>
                         <div class="card bg-base-100 shadow-xl hover:scale-105 transition duration-200">
                             <figure>
-                                <img src="../public/produk_gambar/<?= $p['prod_gambar'] ?>"
+                                <img src="https://img.nafisahcake.store/produk/<?= $p['prod_gambar'] ?>"
                                     alt="<?= ucwords(htmlspecialchars($p['prod_nama'])) ?>"
                                     class="w-full h-56 object-cover rounded-t-xl" />
                             </figure>

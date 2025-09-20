@@ -36,10 +36,10 @@ if ($topProduct) {
                 Nafisah Bread & Cake
             </h1>
             <!-- Gambar produk -->
-            <img src="/public/produk_gambar/<?= htmlspecialchars($detailProduct['prod_gambar']) ?>"
+            <img src="https://img.nafisahcake.store/produk/<?= htmlspecialchars($detailProduct['prod_gambar']) ?>"
                 alt="<?= htmlspecialchars($detailProduct['prod_nama']) ?>"
                 class="w-96 h-64 object-cover border rounded-lg"
-                onerror="this.src='/public/produk_gambar/no-image.png';" />
+                onerror="this.src='https://img.nafisahcake.store/produk/no-image.png';" />
             <p class="mt-2 text-md text-gray-600 italic">
                 <?= htmlspecialchars($detailProduct['prod_nama']) ?>
             </p>

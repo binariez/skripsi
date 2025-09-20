@@ -67,7 +67,7 @@
                                         <tr>
                                             <td>
                                                 <?php if (!empty($d['prod_gambar'])): ?>
-                                                    <img src="../../../public/produk_gambar/<?= htmlspecialchars($d['prod_gambar']) ?>" width="50" height="50" style="object-fit:cover; border-radius:5px;">
+                                                    <img src="https://img.nafisahcake.store/produk/<?= htmlspecialchars($d['prod_gambar']) ?>" width="50" height="50" style="object-fit:cover; border-radius:5px;">
                                                 <?php else: ?>
                                                     <span class="text-muted">-</span>
                                                 <?php endif; ?>

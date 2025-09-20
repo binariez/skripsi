@@ -57,7 +57,7 @@ $produkTerbaru = $db->produk->find([], ['limit' => 4, 'sort' => ['_id' => -1]]);
                 ?>
                 <div class="card w-64 bg-white border border-slate-200 shadow-sm hover:shadow-md transition">
                     <a href="detail_produk.php?prod_id=<?= $d['_id'] ?>">
-                        <figure><img src="../public/produk_gambar/<?= $d['prod_gambar'] ?>" alt="gambar" class="h-48 w-full object-cover rounded-t-lg"></figure>
+                        <figure><img src="https://img.nafisahcake.store/produk/<?= $d['prod_gambar'] ?>" alt="gambar" class="h-48 w-full object-cover rounded-t-lg"></figure>
                     </a>
                     <div class="card-body">
                         <h3 class="font-bold text-lg text-slate-800"><?= $d['prod_nama'] ?></h3>

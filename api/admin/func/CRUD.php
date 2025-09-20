@@ -36,26 +36,28 @@ if (isset($_GET['hapus_produk'])) {
             throw new Exception("ID tidak valid");
         }
 
-        // Ambil data produk sebelum dihapus
         $produk = $db->produk->findOne(
             ['_id' => new ObjectId($idProduk)],
             ['projection' => ['prod_gambar' => 1]]
         );
 
-        // Hapus produk dari database
         $deleteResult = $db->produk->deleteOne(['_id' => new ObjectId($idProduk)]);
 
         if ($deleteResult->getDeletedCount() > 0) {
-            // Hapus file gambar dari folder
             if (!empty($produk['prod_gambar'])) {
-                $filePath = "../../public/produk_gambar/" . $produk['prod_gambar'];
-                if (file_exists($filePath)) {
-                    unlink($filePath);
-                }
+                $deleteUrl = "https://img.nafisahcake.store/delete.php";
+                $fileName  = $produk['prod_gambar']; // hanya nama file
+
+                $ch = curl_init();
+                curl_setopt($ch, CURLOPT_URL, $deleteUrl);
+                curl_setopt($ch, CURLOPT_POST, 1);
+                curl_setopt($ch, CURLOPT_POSTFIELDS, ['file' => $fileName]);
+                curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+                curl_exec($ch);
+                curl_close($ch);
             }
 
             $db->keranjang->deleteMany(['prod_id' => new ObjectId($idProduk)]);
-
             header("Location: index.php?i=prod&status=deleted");
         } else {
             header("Location: index.php?i=prod&status=notfound");
@@ -78,40 +80,42 @@ if (isset($_GET['tambah_produk']) && $_SERVER['REQUEST_METHOD'] === 'POST') {
         $stok   = intval($_POST['prod_stok']);
         $gambar = "";
 
-        // Cek apakah kode produk sudah ada
         $existing = $db->produk->findOne(['prod_kode' => $kode]);
         if ($existing) {
             header("Location: index.php?i=prod&status=kode_exist");
             exit;
         }
 
-        // Upload gambar jika ada
         if (!empty($_FILES['prod_gambar']['name'])) {
-            $uploadDir  = '../../public/produk_gambar/';
-            $fileName   = uniqid() . "_" . basename($_FILES['prod_gambar']['name']);
-            $uploadFile = $uploadDir . $fileName;
+            $uploadUrl = "https://img.nafisahcake.store/upload.php";
+            $cfile = new CURLFile(
+                $_FILES['prod_gambar']['tmp_name'],
+                $_FILES['prod_gambar']['type'],
+                $_FILES['prod_gambar']['name']
+            );
+            $data = ["file" => $cfile];
 
-            if (move_uploaded_file($_FILES['prod_gambar']['tmp_name'], $uploadFile)) {
-                $gambar = $fileName;
+            $ch = curl_init();
+            curl_setopt($ch, CURLOPT_URL, $uploadUrl);
+            curl_setopt($ch, CURLOPT_POST, 1);
+            curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+            $response = curl_exec($ch);
+            curl_close($ch);
+
+            $result = json_decode($response, true);
+            if ($result && $result['status'] === "success") {
+                $gambar = $result['filename']; // hanya nama file
             }
         }
 
-        $voucherId = !empty($_POST['id_voucher']) ? new MongoDB\BSON\ObjectId($_POST['id_voucher']) : null;
-
-        // Jika ada voucher, hitung diskon
-        if ($voucherId) {
-            $voucher = $db->voucher->findOne(['_id' => $voucherId]);
-            if ($voucher) {
-                $diskon = intval($voucher['diskon']);
-                $harga_akhir = $harga_awal - ($harga_awal * $diskon / 100);
-            }
-        }
+        $voucherId = !empty($_POST['id_voucher']) ? new ObjectId($_POST['id_voucher']) : null;
 
         $insertData = [
             'prod_kode'      => $kode,
             'prod_nama'      => $nama,
             'prod_deskripsi' => $desk,
-            'prod_harga'     => $harga, // harga setelah diskon
+            'prod_harga'     => $harga,
             'prod_stok'      => (int)$stok,
             'prod_gambar'    => $gambar,
         ];
@@ -130,23 +134,15 @@ if (isset($_GET['tambah_produk']) && $_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
+
 // EDIT PRODUK
-if (isset($_GET['edit_produk'])) {
+if (isset($_GET['edit_produk']) && $_SERVER['REQUEST_METHOD'] === 'POST') {
     try {
         $idProduk = $_POST['prod_id'];
-        $voucherId = !empty($_POST['id_voucher']) ? new MongoDB\BSON\ObjectId($_POST['id_voucher']) : null;
+        $voucherId = !empty($_POST['id_voucher']) ? new ObjectId($_POST['id_voucher']) : null;
 
         $harga = intval($_POST['prod_harga']);
 
-        if ($voucherId) {
-            $voucher = $db->voucher->findOne(['_id' => $voucherId]);
-            if ($voucher) {
-                $diskon = intval($voucher['diskon']);
-                $harga_akhir = $harga_awal - ($harga_awal * $diskon / 100);
-            }
-        }
-
-        // Data yang akan diupdate
         $updateData = [
             'prod_kode'      => $_POST['prod_kode'],
             'prod_nama'      => $_POST['prod_nama'],
@@ -161,36 +157,49 @@ if (isset($_GET['edit_produk'])) {
             $updateData['id_voucher'] = null;
         }
 
-        // Cek apakah ada file gambar baru
         if (!empty($_FILES['prod_gambar']['name'])) {
-            // Ambil data produk lama untuk tahu nama file gambar lama
             $produkLama = $db->produk->findOne(
-                ['_id' => new MongoDB\BSON\ObjectId($idProduk)],
+                ['_id' => new ObjectId($idProduk)],
                 ['projection' => ['prod_gambar' => 1]]
             );
 
-            // Hapus file lama jika ada dan file-nya ada
             if (!empty($produkLama['prod_gambar'])) {
-                $oldFilePath = "../../public/produk_gambar/" . $produkLama['prod_gambar'];
-                if (file_exists($oldFilePath)) {
-                    unlink($oldFilePath);
-                }
+                $deleteUrl = "https://img.nafisahcake.store/delete.php";
+                $fileName  = $produkLama['prod_gambar'];
+
+                $ch = curl_init();
+                curl_setopt($ch, CURLOPT_URL, $deleteUrl);
+                curl_setopt($ch, CURLOPT_POST, 1);
+                curl_setopt($ch, CURLOPT_POSTFIELDS, ['file' => $fileName]);
+                curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+                curl_exec($ch);
+                curl_close($ch);
             }
 
-            // Upload file baru
-            $targetDir = "../../public/produk_gambar/";
-            $fileName = uniqid() . "_" . basename($_FILES['prod_gambar']['name']);
-            $targetFilePath = $targetDir . $fileName;
+            $uploadUrl = "https://img.nafisahcake.store/upload.php";
+            $cfile = new CURLFile(
+                $_FILES['prod_gambar']['tmp_name'],
+                $_FILES['prod_gambar']['type'],
+                $_FILES['prod_gambar']['name']
+            );
+            $data = ["file" => $cfile];
 
-            if (move_uploaded_file($_FILES['prod_gambar']['tmp_name'], $targetFilePath)) {
-                $updateData['prod_gambar'] = $fileName;
-            } else {
-                throw new Exception("Gagal upload gambar baru");
+            $ch = curl_init();
+            curl_setopt($ch, CURLOPT_URL, $uploadUrl);
+            curl_setopt($ch, CURLOPT_POST, 1);
+            curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+            $response = curl_exec($ch);
+            curl_close($ch);
+
+            $result = json_decode($response, true);
+            if ($result && $result['status'] === "success") {
+                $updateData['prod_gambar'] = $result['filename']; // simpan nama file
             }
         }
 
         $updateResult = $db->produk->updateOne(
-            ['_id' => new MongoDB\BSON\ObjectId($idProduk)],
+            ['_id' => new ObjectId($idProduk)],
             ['$set' => $updateData]
         );
 
@@ -201,8 +210,7 @@ if (isset($_GET['edit_produk'])) {
         }
         exit;
     } catch (Exception $e) {
-        echo $e;
-        // header("Location: index.php?i=prod&status=error");
+        header("Location: index.php?i=prod&status=error");
         exit;
     }
 }
