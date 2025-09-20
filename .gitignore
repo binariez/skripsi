@@ -1,0 +1,4 @@
+.vercel
+/vendor/
+.vscode
+.env

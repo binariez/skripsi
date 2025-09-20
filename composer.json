@@ -1,0 +1,29 @@
+{
+    "name": "raaa/mongo",
+    "description": "php+mongodb",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Azhar SS",
+            "email": "azhacra@gmail.com"
+        }
+    ],
+    "require": {
+        "mongodb/mongodb": "1.19",
+        "vlucas/phpdotenv": "^5.6",
+        "midtrans/midtrans-php": "^2.6",
+        "nesbot/carbon": "^3.10",
+        "cboden/ratchet": "0.4",
+        "react/socket": "1.12",
+        "phpmailer/phpmailer": "^6.10"
+    },
+    "config": {
+        "platform": {
+            "php": "8.1"
+        },
+        "allow-plugins": {
+            "robloach/component-installer": true
+        }
+    }
+}
