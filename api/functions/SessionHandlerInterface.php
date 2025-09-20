@@ -54,3 +54,11 @@ class MongoSessionHandler implements \SessionHandlerInterface
         return $result->getDeletedCount();
     }
 }
+
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/../../');
+$dotenv->safeLoad();
+
+$uri = 'mongodb+srv://' . $_ENV['MDB_USER'] . ':' . $_ENV['MDB_PASS'] . '@' . $_ENV['ATLAS_CLUSTER_SRV'] . '/?retryWrites=true&w=majority&appName=' . $_ENV['APP_NAME'];
+
+$handler = new MongoSessionHandler($uri);
+session_set_save_handler($handler, true);
