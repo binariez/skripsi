@@ -6,6 +6,18 @@
     },
     "routes": [
         { "src": "/", "dest": "/api/index.php" },
-        { "src": "/(.*)", "dest": "/api/$1.php" }
+        {
+            "src": "/index.php",
+            "headers": { "Location": "/api/index.php" },
+            "dest": "/api/index.php"
+        },
+        {
+            "src": "/public/(.*)",
+            "dest": "/$1"
+        },
+        {
+            "src": "/public/*/(.*)",
+            "dest": "/*/$1"
+        }
     ]
 }
