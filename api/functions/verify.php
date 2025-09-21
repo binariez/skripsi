@@ -1,5 +1,5 @@
 <?php
-require_once 'Connection.php';
+require_once __DIR__ . '/Connection.php';
 
 if (isset($_GET['email']) && isset($_GET['token'])) {
     $email = $_GET['email'];

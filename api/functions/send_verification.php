@@ -11,19 +11,19 @@ function sendVerificationEmail($email, $token)
     try {
         // SMTP setting
         $mail->isSMTP();
-        $mail->Host       = 'smtp.gmail.com';   // server Gmail
+        $mail->Host       = 'mail.nafisahcake.store';
         $mail->SMTPAuth   = true;
-        $mail->Username   = 'kucingpeak@gmail.com';   // email kamu
-        $mail->Password   = 'bpfrcbqnmhgbcofv';     // App Password Gmail
-        $mail->SMTPSecure = 'tls';   // atau 'ssl'
-        $mail->Port       = 587;     // TLS: 587, SSL: 465
+        $mail->Username   = 'admin@mail.nafisahcake.store';
+        $mail->Password   = getenv("SMTPPASS");
+        $mail->SMTPSecure = 'ssl';   // tls/ssl
+        $mail->Port       = 465;     // TLS: 587, SSL: 465
 
         // pengirim & penerima
-        $mail->setFrom('azhacra@gmail.com', 'Nafisah Bread&Cake');
+        $mail->setFrom('admin@mail.nafisahcake.store', 'Nafisah Bread&Cake');
         $mail->addAddress($email);
 
         // isi email
-        $verifyLink = "https://b574a1d4e761.ngrok-free.app/skripsi/api/functions/verify.php?email=$email&token=$token";
+        $verifyLink = "https://nafisahcake.store/verify.php?email=$email&token=$token";
         $mail->isHTML(true);
         $mail->Subject = 'Verifikasi Email Anda';
         $mail->Body    = "Klik link berikut untuk verifikasi: <a href='$verifyLink'>$verifyLink</a>";

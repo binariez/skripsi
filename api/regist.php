@@ -1,7 +1,7 @@
 <?php
 require_once "functions/Template.php";
 require_once "functions/Connection.php";
-require_once "functions/send_verification.php"; // tambahin ini
+require_once "functions/send_verification.php";
 
 if (isset($_POST['daftar'])) {
     global $db;
@@ -66,7 +66,7 @@ if (isset($_POST['daftar'])) {
     // input ke db
     if ($hasil = $db->user->insertOne($user)) {
         // kirim email verifikasi
-        // sendVerificationEmail($email, $token);
+        sendVerificationEmail($email, $token);
 
         echo "<p class='bg-success'>Berhasil daftar akun! ID: " . $hasil->getInsertedId() . "</p>";
         echo "<p class='bg-warning'>Silahkan cek email anda di: " . $email . " untuk verifikasi.</p>";
