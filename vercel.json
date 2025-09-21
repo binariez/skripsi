@@ -82,7 +82,7 @@
         },
         {
             "src": "/func/livechat_admin/get_customers.php",
-            "dest": "/api/admin/func/livechat_admin/get_customers.php"
+            "dest": "/api/livechat/get_customers.php"
         },
         {
             "src": "/func/livechat_admin/get_chat_admin.php",
