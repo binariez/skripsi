@@ -1,7 +1,7 @@
 <?php
 require_once __DIR__ . '/../functions/SessionHandlerInterface.php';
 session_start();
-require __DIR__ . '/../../functions/Connection.php';
+require_once __DIR__ . '/../functions/Connection.php';
 
 header('Content-Type: application/json');
 
