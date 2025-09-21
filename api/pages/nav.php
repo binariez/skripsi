@@ -94,7 +94,7 @@ require_once __DIR__ . "/../login.php";
                         </a>
                         <div class="dropdown dropdown-end">
                             <div tabindex="0" role="button" class="avatar m-1 transition-scale ease-out hover:scale-105 duration-200">
-                                <div class="rounded-full w-11"><img src="<?php echo (isset($_SESSION['UserLogin']) ? '../public/user_gambar/' . $pfp : '../public/pfp.png') ?>"></div>
+                                <div class="rounded-full w-11"><img src="<?php echo (isset($_SESSION['UserLogin']) ? 'https://img.nafisahcake.store/user/' . $pfp : '../public/pfp.png') ?>"></div>
                             </div>
                             <ul tabindex="0" class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
                                 <?php
@@ -116,7 +116,7 @@ require_once __DIR__ . "/../login.php";
 
                                                 <div class="avatar">
                                                     <div class="w-32 rounded-full">
-                                                        <img src="../public/user_gambar/<?= $pfp ?>" />
+                                                        <img src="https://img.nafisahcake.store/user/<?= $pfp ?>" />
                                                     </div>
                                                 </div>
 

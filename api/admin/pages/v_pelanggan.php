@@ -50,7 +50,7 @@
                                         <tr>
                                             <td>
                                                 <?php if (!empty($d['user_pfp'])) { ?>
-                                                    <img src="../../../public/user_gambar/<?= htmlspecialchars($d['user_pfp']) ?>" alt="Foto" width="50" height="50" style="object-fit: cover; border-radius: 5px;">
+                                                    <img src="https://img.nafisahcake.store/user/<?= htmlspecialchars($d['user_pfp']) ?>" alt="Foto" width="50" height="50" style="object-fit: cover; border-radius: 5px;">
                                                 <?php } else { ?>
                                                     <span class="text-muted">-</span>
                                                 <?php } ?>

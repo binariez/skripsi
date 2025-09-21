@@ -4,6 +4,8 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
 require_once __DIR__ . '/../../vendor/autoload.php';
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/../../');
+$dotenv->safeLoad();
 
 function sendVerificationEmail($email, $token)
 {
@@ -14,7 +16,7 @@ function sendVerificationEmail($email, $token)
         $mail->Host       = 'mail.nafisahcake.store';
         $mail->SMTPAuth   = true;
         $mail->Username   = 'admin@mail.nafisahcake.store';
-        $mail->Password   = getenv("SMTPPASS");
+        $mail->Password   = $_ENV['SMTPPASS'];
         $mail->SMTPSecure = 'ssl';   // tls/ssl
         $mail->Port       = 465;     // TLS: 587, SSL: 465
 

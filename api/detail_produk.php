@@ -178,7 +178,7 @@ if (!$produk) {
                         <div class="chat chat-start mb-3">
                             <div class="chat-image avatar">
                                 <div class="w-14 rounded-full">
-                                    <img alt="User profile" src="../public/user_gambar/<?= htmlspecialchars($user['user_pfp'] ?? 'default-avatar.png') ?>" />
+                                    <img alt="User profile" src="https://img.nafisahcake.store/user<?= htmlspecialchars($user['user_pfp'] ?? 'default-avatar.png') ?>" />
                                 </div>
                             </div>
                             <div class="chat-header">

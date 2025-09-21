@@ -45,7 +45,7 @@ if (isset($_GET['hapus_produk'])) {
 
         if ($deleteResult->getDeletedCount() > 0) {
             if (!empty($produk['prod_gambar'])) {
-                $deleteUrl = "https://img.nafisahcake.store/delete.php";
+                $deleteUrl = "https://img.nafisahcake.store/delete_produk.php";
                 $fileName  = $produk['prod_gambar']; // hanya nama file
 
                 $ch = curl_init();
@@ -87,7 +87,7 @@ if (isset($_GET['tambah_produk']) && $_SERVER['REQUEST_METHOD'] === 'POST') {
         }
 
         if (!empty($_FILES['prod_gambar']['name'])) {
-            $uploadUrl = "https://img.nafisahcake.store/upload.php";
+            $uploadUrl = "https://img.nafisahcake.store/upload_produk.php";
             $cfile = new CURLFile(
                 $_FILES['prod_gambar']['tmp_name'],
                 $_FILES['prod_gambar']['type'],
@@ -164,7 +164,7 @@ if (isset($_GET['edit_produk']) && $_SERVER['REQUEST_METHOD'] === 'POST') {
             );
 
             if (!empty($produkLama['prod_gambar'])) {
-                $deleteUrl = "https://img.nafisahcake.store/delete.php";
+                $deleteUrl = "https://img.nafisahcake.store/delete_produk.php";
                 $fileName  = $produkLama['prod_gambar'];
 
                 $ch = curl_init();
@@ -176,7 +176,7 @@ if (isset($_GET['edit_produk']) && $_SERVER['REQUEST_METHOD'] === 'POST') {
                 curl_close($ch);
             }
 
-            $uploadUrl = "https://img.nafisahcake.store/upload.php";
+            $uploadUrl = "https://img.nafisahcake.store/upload_produk.php";
             $cfile = new CURLFile(
                 $_FILES['prod_gambar']['tmp_name'],
                 $_FILES['prod_gambar']['type'],
