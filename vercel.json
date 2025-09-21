@@ -113,6 +113,11 @@
         {
             "src": "/verify.php",
             "dest": "/api/functions/verify.php"
+        },
+
+        {
+            "src": "/notif",
+            "dest": "/api/pembayaran/notifikasi/notification_handler.php"
         }
     ]
 }
