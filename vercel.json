@@ -81,15 +81,15 @@
             "dest": "/api/livechat/send_chat.php"
         },
         {
-            "src": "/admin/func/livechat_admin/get_customers.php",
+            "src": "/func/livechat_admin/get_customers.php",
             "dest": "/api/admin/func/livechat_admin/get_customers.php"
         },
         {
-            "src": "/admin/func/livechat_admin/get_chat_admin.php",
+            "src": "/func/livechat_admin/get_chat_admin.php",
             "dest": "/api/admin/func/livechat_admin/get_chat_admin.php"
         },
         {
-            "src": "/admin/func/livechat_admin/send_chat_admin.php",
+            "src": "/func/livechat_admin/send_chat_admin.php",
             "dest": "/api/admin/func/livechat_admin/send_chat_admin.php"
         },
 

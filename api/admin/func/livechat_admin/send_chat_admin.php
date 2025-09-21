@@ -1,6 +1,6 @@
 <?php
 session_start();
-require '../../../functions/Connection.php';
+require __DIR__ . '../../../functions/Connection.php';
 
 header('Content-Type: application/json');
 
