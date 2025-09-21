@@ -69,7 +69,7 @@
     // Load daftar pelanggan (dengan polling untuk update real-time)
     function loadCustomerList() {
         // func/livechat_admin/get_customers.php
-        fetch('get_customers.php')
+        fetch('livechat/get_customers.php')
             .then(res => res.json())
             .then(data => {
                 // Urutkan pelanggan berdasarkan last_time descending
@@ -134,7 +134,7 @@
     function fetchChat() {
         if (!selectedCustomer) return;
 
-        fetch('get_chat_admin.php?customer_id=' + encodeURIComponent(selectedCustomer) + '&lastTime=' + lastTime)
+        fetch('livechat/get_chat_admin.php?customer_id=' + encodeURIComponent(selectedCustomer) + '&lastTime=' + lastTime)
             .then(res => res.json())
             .then(data => {
                 data.chats.forEach(c => {
@@ -155,7 +155,7 @@
         if (e.key === 'Enter' && chatInput.value.trim() !== '' && selectedCustomer) {
             const msgText = chatInput.value;
 
-            fetch('send_chat_admin.php', {
+            fetch('livechat/send_chat_admin.php', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/x-www-form-urlencoded'
