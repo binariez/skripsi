@@ -1,9 +1,9 @@
 <?php
-require_once "functions/Sessions.php";
-require_once "functions/Template.php";
+require_once __DIR__ . "/functions/Sessions.php";
+require_once __DIR__ . "/functions/Template.php";
 
 date_default_timezone_set('Asia/Jakarta');
-require_once 'functions/SessionHandlerInterface.php';
+require_once __DIR__ . '/functions/SessionHandlerInterface.php';
 session_start();
 
 $userid = new MongoDB\BSON\ObjectId($_SESSION['UserLogin'][0]['id']);
@@ -72,7 +72,7 @@ if ($commit->getInsertedCount() > 0) {
             ['$inc' => ['prod_stok' => -$item['qty']]] // Mengurangi stok
         );
     }
-    // $db->keranjang->deleteMany(['plg_id' => $userid]);
+    $db->keranjang->deleteMany(['plg_id' => $userid]);
 ?>
     <script>
         window.close();

@@ -73,24 +73,41 @@
         { "src": "/admin(/?)", "dest": "/api/admin/index.php" },
 
         {
-            "src": "livechat/get_chat.php",
+            "src": "/livechat/get_chat.php",
             "dest": "/api/livechat/get_chat.php"
         },
         {
-            "src": "livechat/send_chat.php",
+            "src": "/livechat/send_chat.php",
             "dest": "/api/livechat/send_chat.php"
         },
         {
-            "src": "func/livechat_admin/get_customers.php",
+            "src": "/func/livechat_admin/get_customers.php",
             "dest": "/api/admin/func/livechat_admin/get_customers.php"
         },
         {
-            "src": "func/livechat_admin/get_chat_admin.php",
+            "src": "/func/livechat_admin/get_chat_admin.php",
             "dest": "/api/admin/func/livechat_admin/get_chat_admin.php"
         },
         {
-            "src": "func/livechat_admin/send_chat_admin.php",
+            "src": "/func/livechat_admin/send_chat_admin.php",
             "dest": "/api/admin/func/livechat_admin/send_chat_admin.php"
+        },
+
+        {
+            "src": "/pembayaran/data_kecamatan.php",
+            "dest": "/api/pembayaran/data_kecamatan.php"
+        },
+        {
+            "src": "/pembayaran/data_kelurahan.php",
+            "dest": "/api/pembayaran/data_kelurahan.php"
+        },
+        {
+            "src": "/pembayaran/hitung_ongkir.php",
+            "dest": "/api/pembayaran/hitung_ongkir.php"
+        },
+        {
+            "src": "/pembayaran/midtrans.php",
+            "dest": "/api/pembayaran/midtrans.php"
         },
 
         {

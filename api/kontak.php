@@ -74,21 +74,21 @@ $produkDiskon = $db->produk->find($query);
                             <i class="fa-solid fa-phone text-rose-500 text-xl"></i>
                             <span>
                                 <p class="font-semibold">Telepon</p>
-                                <p class="text-gray-600">+62 812 3456 7890</p>
+                                <p class="text-gray-600">+62 822 7385 7145</p>
                             </span>
                         </li>
                         <li class="flex items-start gap-3">
                             <i class="fa-solid fa-envelope text-rose-500 text-xl"></i>
                             <span>
                                 <p class="font-semibold">Email</p>
-                                <p class="text-gray-600">info@nafisahcake.com</p>
+                                <p class="text-gray-600">admin@mail.nafisahcake.store</p>
                             </span>
                         </li>
                         <li class="flex items-start gap-3">
                             <i class="fa-solid fa-clock text-rose-500 text-xl"></i>
                             <span>
                                 <p class="font-semibold">Jam Operasional</p>
-                                <p class="text-gray-600">Setiap Hari, 08.00 - 20.00</p>
+                                <p class="text-gray-600">Setiap Hari, 09.00 - 21.00</p>
                             </span>
                         </li>
                     </ul>
