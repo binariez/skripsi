@@ -58,7 +58,7 @@ if (!$produk) {
                         <!-- Gambar produk -->
                         <div class="flex-shrink-0">
                             <img class="w-[250px] aspect-square object-cover object-center rounded-lg shadow-md"
-                                src="../public/produk_gambar/<?= $produk['prod_gambar'] ?>"
+                                src="https://img.nafisahcake.store/produk/<?= $produk['prod_gambar'] ?>"
                                 alt="<?= htmlspecialchars($produk['prod_nama']) ?>">
                         </div>
 
