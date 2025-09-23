@@ -4,15 +4,30 @@ require_once __DIR__ . "/../login.php";
 ?>
 
 <nav class="sticky top-0 z-30">
-    <div class=" w-full">
+    <div class="w-full">
         <div class="px-8 w-full bg-slate-200 shadow-sm">
             <div class="border-b-[1px] py-0">
                 <div class="flex items-center justify-between gap-3 md:gap-0">
-                    <a href="../api/" class="flex items-center text-2xl font-bold">
+
+                    <!-- Logo (tampil di md ke atas) -->
+                    <a href="../api/" class="hidden md:flex items-center text-2xl font-bold">
                         <img class="mix-blend-multiply" src="../public/logo.png" width="170" alt="NFS" />
                     </a>
 
-                    <!-- navbar -->
+                    <!-- Tombol Burger (mobile only) -->
+                    <button id="mobileBurger"
+                        class="md:hidden flex items-center p-2 text-gray-700 focus:outline-none"
+                        aria-expanded="false" aria-controls="mobileMenu" aria-label="Toggle navigation">
+
+                        <!-- open (search) -->
+                        <i id="iconOpen" class="fa-solid fa-magnifying-glass text-2xl block" style="font-size: 2rem;"></i>
+
+                        <!-- close (x) -->
+                        <i id="iconClose" class="fa-solid fa-xmark text-2xl hidden" style="font-size: 2rem;"></i>
+                    </button>
+
+
+                    <!-- navbar (desktop) -->
                     <?php
                     $current_page = basename($_SERVER['PHP_SELF']);
                     $pages = ['produk.php', 'promosi.php', 'kontak.php'];
@@ -22,36 +37,26 @@ require_once __DIR__ . "/../login.php";
                         $current_page = 'produk.php';
                     }
                     ?>
-                    <div class="hidden sm:ml-6 sm:block">
+                    <div class="hidden md:block sm:ml-6">
                         <div class="flex space-x-4">
                             <a href="produk.php"
-                                class="rounded-md px-3 py-2 text-sm font-medium 
-           <?php echo ($current_page == 'produk.php')
-                ? 'bg-gray-900 text-white'
-                : 'text-black hover:bg-gray-700 hover:text-white'; ?>">
+                                class="rounded-md px-3 py-2 text-sm font-medium <?php echo ($current_page == 'produk.php') ? 'bg-gray-900 text-white' : 'text-black hover:bg-gray-700 hover:text-white'; ?>">
                                 Produk
                             </a>
 
                             <a href="promosi.php"
-                                class="rounded-md px-3 py-2 text-sm font-medium 
-           <?php echo ($current_page == 'promosi.php')
-                ? 'bg-gray-900 text-white'
-                : 'text-black hover:bg-gray-700 hover:text-white'; ?>">
+                                class="rounded-md px-3 py-2 text-sm font-medium <?php echo ($current_page == 'promosi.php') ? 'bg-gray-900 text-white' : 'text-black hover:bg-gray-700 hover:text-white'; ?>">
                                 Promosi
                             </a>
 
                             <a href="kontak.php"
-                                class="rounded-md px-3 py-2 text-sm font-medium 
-           <?php echo ($current_page == 'kontak.php')
-                ? 'bg-gray-900 text-white'
-                : 'text-black hover:bg-gray-700 hover:text-white'; ?>">
+                                class="rounded-md px-3 py-2 text-sm font-medium <?php echo ($current_page == 'kontak.php') ? 'bg-gray-900 text-white' : 'text-black hover:bg-gray-700 hover:text-white'; ?>">
                                 Kontak
                             </a>
                         </div>
                     </div>
 
-
-                    <!-- search -->
+                    <!-- search (desktop only) -->
                     <div class="hidden md:block">
                         <form class="join" action="produk.php" method="get">
                             <div>
@@ -65,6 +70,8 @@ require_once __DIR__ . "/../login.php";
                             </div>
                         </form>
                     </div>
+
+                    <!-- right side (cart, admin, avatar) -->
                     <div class="flex items-center gap-8 md:gap-12">
                         <?php
                         if (isset($_SESSION['UserLogin'])) {
@@ -92,14 +99,16 @@ require_once __DIR__ . "/../login.php";
                                 <i class="fa-solid fa-cart-shopping" style="font-size: 2rem;"></i>
                             </div>
                         </a>
+
                         <div class="dropdown dropdown-end">
                             <div tabindex="0" role="button" class="avatar m-1 transition-scale ease-out hover:scale-105 duration-200">
-                                <div class="rounded-full w-11"><img src="<?php echo (isset($_SESSION['UserLogin']) ? 'https://img.nafisahcake.store/user/' . $pfp : '../public/pfp.png') ?>"></div>
+                                <div class="rounded-full w-11">
+                                    <img src="<?php echo (isset($_SESSION['UserLogin']) ? 'https://img.nafisahcake.store/user/' . $pfp : '../public/pfp.png') ?>">
+                                </div>
                             </div>
                             <ul tabindex="0" class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
                                 <?php
                                 if (isset($_SESSION['UserLogin'])) {
-
                                 ?>
                                     <li>
                                         <p><?= ucfirst($nama) ?> | <?= $role ?></p>
@@ -129,7 +138,6 @@ require_once __DIR__ . "/../login.php";
                                                     <label>Email: <?= $email ?></label>
                                                     <label>Alamat: <?= $alamat ?></label>
                                                     <label>Poin: <?= $poin ?></label>
-                                                    <!-- <input type="text" name="alamat" value="<?= $alamat ?>" placeholder="Alamat" class="input input-bordered input-md w-full" required /> -->
                                                     <input type="password" name="passwordlama" placeholder="Password Sekarang" class="input input-bordered input-md w-full" required />
                                                     <input onkeyup="onChange();" type="password" name="passwordbaru" placeholder="Password Baru" class="input input-bordered input-md w-full" required />
                                                     <input onkeyup="onChange();" type="password" name="konfirmasi" placeholder="konfirmasi Password Baru" class="input input-bordered input-md w-full" required />
@@ -221,7 +229,57 @@ require_once __DIR__ . "/../login.php";
                             </ul>
                         </div>
                     </div>
+
+                </div> <!-- end flex header -->
+
+                <!-- Mobile menu (hidden on md+) -->
+                <div id="mobileMenu" class="bg-slate-200 md:hidden max-h-0 overflow-hidden transition-all duration-300 ease-in-out px-4 py-2 space-y-2">
+                    <a href="index.php"
+                        class="block rounded-md px-3 py-2 text-sm font-medium">
+                        Beranda
+                    </a>
+                    <a href="produk.php"
+                        class="block rounded-md px-3 py-2 text-sm font-medium">
+                        Produk
+                    </a>
+                    <a href="promosi.php"
+                        class="block rounded-md px-3 py-2 text-sm font-medium">
+                        Promosi
+                    </a>
+                    <a href="kontak.php"
+                        class="block rounded-md px-3 py-2 text-sm font-medium">
+                        Kontak
+                    </a>
+
+                    <!-- search di mobile -->
+                    <form class="mt-2 join w-full" action="produk.php" method="get">
+                        <input name="keyword" class="input input-bordered join-item w-full" placeholder="Cari produk..." required />
+                        <input value="Cari" type="submit" class="btn join-item">
+                    </form>
                 </div>
+
+                <script>
+                    document.addEventListener('DOMContentLoaded', function() {
+                        const burger = document.getElementById('mobileBurger');
+                        const mobileMenu = document.getElementById('mobileMenu');
+                        const iconOpen = document.getElementById('iconOpen');
+                        const iconClose = document.getElementById('iconClose');
+
+                        burger.addEventListener('click', function() {
+                            const expanded = burger.getAttribute('aria-expanded') === 'true';
+                            burger.setAttribute('aria-expanded', String(!expanded));
+
+                            // Toggle max-height (untuk animasi slide)
+                            mobileMenu.classList.toggle('max-h-0');
+                            mobileMenu.classList.toggle('max-h-[400px]'); // ganti nilai jika konten lebih panjang
+
+                            // Toggle ikon
+                            iconOpen.classList.toggle('hidden');
+                            iconClose.classList.toggle('hidden');
+                        });
+                    });
+                </script>
+
             </div>
         </div>
     </div>

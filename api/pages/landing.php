@@ -9,9 +9,23 @@ $produkTerbaru = $db->produk->find([], ['limit' => 4, 'sort' => ['_id' => -1]]);
     <section class="relative bg-slate-800 text-white">
         <div class="h-[500px] bg-cover bg-center flex flex-col items-center justify-center text-center px-4"
             style="background-image: url('../public/landing.jpg'); background-blend-mode: multiply;">
-            <h1 class="text-4xl md:text-6xl font-bold mb-4">Selamat Datang di <span class="text-emerald-400">Nafisah Bread & Cake</span></h1>
-            <p class="text-lg md:text-xl mb-6 text-slate-200">Roti fresh setiap hari, rasa yang selalu menggoda.</p>
-            <p class="mb-6 text-black" style="font-size: 3rem;">Promo September Ceria: Beli 2 Bolu Gulung, Gratis 4 Donat</p>
+            <div class="">
+                <h1 class="tw text-4xl md:text-6xl font-bold mb-4 text-center">
+                    Selamat Datang di <span class="text-sky-500">Nafisah Bread & Cake</span>
+                </h1>
+            </div>
+
+            <style>
+                .tw {
+                    box-shadow: 0 2px 4px rgba(0, 0, 0, 1);
+                    background-color: rgba(0, 0, 0, 0.05);
+                }
+            </style>
+
+            <p class="text-lg font-bold md:text-xl mb-6">Roti fresh setiap hari, rasa yang selalu menggoda.</p>
+            <marquee behavior="scroll" direction="left" scrollamount="10">
+                <p class="mb-6 text-2xl md:text-4xl text-black font-bold">Promo September Ceria: Beli 2 Bolu Gulung, Gratis 4 Donat</p>
+            </marquee>
             <a href="produk.php" class="btn bg-emerald-400 hover:bg-emerald-300 text-black font-semibold px-6">Belanja Sekarang</a>
         </div>
     </section>
