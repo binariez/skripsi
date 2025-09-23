@@ -95,7 +95,7 @@
     }
 
     // Polling daftar pelanggan setiap 2 detik
-    setInterval(loadCustomerList, 2000);
+    setInterval(loadCustomerList, 500);
 
     // Modifikasi appendChat agar chat terbaru muncul di atas
     function appendChat(msgText, sender) {
