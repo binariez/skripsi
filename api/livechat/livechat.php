@@ -55,6 +55,7 @@
         padding: 10px;
         overflow-y: auto;
         border-bottom: 1px solid #ddd;
+        scroll-behavior: smooth;
     }
 
     #chat-input {
@@ -97,8 +98,19 @@
 
     // Toggle chatbox
     chatBtn.addEventListener('click', () => {
-        chatBox.style.display = chatBox.style.display === 'flex' ? 'none' : 'flex';
+        const isOpen = chatBox.style.display === 'flex';
+        chatBox.style.display = isOpen ? 'none' : 'flex';
+
+        if (!isOpen) {
+            requestAnimationFrame(() => {
+                chatMessages.scrollTo({
+                    top: chatMessages.scrollHeight,
+                    behavior: 'smooth'
+                });
+            });
+        }
     });
+
 
     // Fungsi tampilkan chat
     const shownChats = new Set();

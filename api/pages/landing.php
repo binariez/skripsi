@@ -74,7 +74,7 @@ $produkTerbaru = $db->produk->find([], ['limit' => 4, 'sort' => ['_id' => -1]]);
                         <figure><img src="https://img.nafisahcake.store/produk/<?= $d['prod_gambar'] ?>" alt="gambar" class="h-48 w-full object-cover rounded-t-lg"></figure>
                     </a>
                     <div class="card-body">
-                        <h3 class="font-bold text-lg text-slate-800"><?= $d['prod_nama'] ?></h3>
+                        <h3 class="font-bold text-lg text-slate-800"><?= ucwords($d['prod_nama']) ?></h3>
                         <?php if ($voucher): ?>
                             <p class="text-gray-500 line-through text-sm">Rp<?= number_format($harga) ?></p>
                             <p class="text-red-600 font-bold">Rp<?= number_format($hargaSetelahDiskon) ?></p>

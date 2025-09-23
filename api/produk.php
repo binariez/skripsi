@@ -76,6 +76,7 @@ $data = NSessionHandler::getProdukAll($filter, $options);
                 foreach ($data as $d) {
                     $rating = NSessionHandler::hitungRating($d['_id']);
                     $harga = $d['prod_harga'];
+                    $stok = intval($d['prod_stok']);
                     $hargaSetelahDiskon = $harga;
 
                     if (!empty($d['id_voucher'])) {
@@ -116,7 +117,11 @@ $data = NSessionHandler::getProdukAll($filter, $options);
                                         <input type="hidden" name="prod_nama" value="<?= $d['prod_nama'] ?>">
                                         <input type="hidden" name="prod_harga" value="<?= $d['prod_harga'] ?> ">
                                         <input type="hidden" name="prod_gambar" value="<?= $d['prod_gambar'] ?> ">
-                                        <button type="submit" name="tambah" class="btn px-6 bg-slate-700 hover:bg-slate-600 text-white"><i style="font-size: 24px; background-color: transparent;" class="fa-sharp fa-solid fa-cart-plus"></i></button>
+                                        <?php if ($stok <= 0) { ?>
+                                            <button type="button" onclick="alert('Stok Habis')" class="btn px-6 bg-slate-700 hover:bg-slate-600 text-white"><i style="font-size: 24px; background-color: transparent;" class="fa-sharp fa-solid fa-cart-plus"></i></button>
+                                        <?php } else { ?>
+                                            <button type="submit" name="tambah" class="btn px-6 bg-slate-700 hover:bg-slate-600 text-white"><i style="font-size: 24px; background-color: transparent;" class="fa-sharp fa-solid fa-cart-plus"></i></button>
+                                        <?php } ?>
                                     </form>
                                 <?php } ?>
                             </div>
