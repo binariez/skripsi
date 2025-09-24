@@ -155,9 +155,42 @@ if (!$produk) {
 
             <!-- REVIEW -->
             <section class="w-full md:w-2/4 bg-slate-200 mt-3 rounded-md overflow-hidden">
-                <div class="p-3">
-                    <h1 class="text-xl md:text-2xl font-bold mb-3"><i>Review</i></h1>
-                    <!-- isi review seperti semula -->
+                <div class="ms-2 pb-2">
+                    <h1 class="text-2xl pt-1 mb-2 font-bold"><i>Review</i></h1>
+
+                    <?php
+                    $prodId = new MongoDB\BSON\ObjectId($_GET['prod_id']);
+
+                    // Ambil data review dari koleksi "review" berdasarkan id_produk, urutkan descending berdasarkan tanggal
+                    $reviews = $db->review->find(
+                        ['id_prod' => $prodId],
+                        ['sort' => ['review_tgl' => -1]]
+                    );
+
+                    foreach ($reviews as $produkata) {
+                        // Ambil user info dari koleksi "user" berdasarkan id_user di review
+                        $userId = $produkata['id_plg'];
+                        $user = $db->user->findOne(['_id' => $userId]);
+                        $tanggal = Carbon::parse($produkata['review_tgl']);
+                    ?>
+                        <div class="chat chat-start mb-3">
+                            <div class="chat-image avatar">
+                                <div class="w-14 rounded-full">
+                                    <img alt="User profile" src="../public/user_gambar/<?= htmlspecialchars($user['user_pfp'] ?? 'default-avatar.png') ?>" />
+                                </div>
+                            </div>
+                            <div class="chat-header">
+                                <div class="flex align-center items-center gap-2">
+                                    <?= ucfirst(htmlspecialchars($user['user_nama'] ?? 'Anonim')) ?>
+                                    <time class="text-xs opacity-50"><?= $tanggal->translatedFormat('l, d F Y H:i')  ?></time>
+                                    <div class="mb-1 review" data-rateyo-rating="<?= $produkata['review_rating'] ?>"></div>
+                                </div>
+                                <div class="chat-bubble"><?= htmlspecialchars($produkata['review_isi']) ?></div>
+                            </div>
+                        </div>
+                    <?php
+                    }
+                    ?>
                 </div>
             </section>
         </main>
